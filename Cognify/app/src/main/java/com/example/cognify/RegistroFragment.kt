@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
 
-//Por Bruno Dipietro 2023
+//5LB
 //Este fragment lo vamos a utilizar para la creacion de nuevos usuarios
 
 //Declaramos variables

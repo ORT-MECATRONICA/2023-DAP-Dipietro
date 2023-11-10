@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 //import kotlin.coroutines.jvm.internal.CompletedContinuation.context
 
-//Por Bruno Dipietro 2023
-//Se muestra el splashscreen por 2 segundos y no pasa mucho ademas de ser el host
-//de la mitad de la aplicación
+//Se muestra el splashscreen por 2 segundos y no pasa mucho ademas de ser el host de la aplicación
 
 class MainActivity : AppCompatActivity() {
     //vvvvv

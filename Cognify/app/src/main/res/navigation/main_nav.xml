@@ -25,14 +25,5 @@
         android:id="@+id/homeFragment"
         android:name="com.example.cognify.HomeFragment"
         android:label="fragment_home3"
-        tools:layout="@layout/fragment_home3" >
-        <action
-            android:id="@+id/action_homeFragment_to_paciente1Fragment"
-            app:destination="@id/paciente1Fragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/paciente1Fragment"
-        android:name="com.example.cognify.paciente1Fragment"
-        android:label="fragment_paciente1"
-        tools:layout="@layout/fragment_paciente1" />
+        tools:layout="@layout/fragment_home3" />
 </navigation>

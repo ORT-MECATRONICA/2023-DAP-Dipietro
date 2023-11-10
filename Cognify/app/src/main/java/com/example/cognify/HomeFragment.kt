@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
     private var listapacientes: MutableList<Pacientes> = mutableListOf()
     private lateinit var recycler: RecyclerView
 
-    //Firebase cositas
+    //Firebase
     private lateinit var firebaseAuth: FirebaseAuth //Variable del firebase
     val db = FirebaseFirestore.getInstance() //Instanciamos la base de datos
     private lateinit var database: FirebaseDatabase
@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
 
         agregarNuevoPaciente = view.findViewById(R.id.agregarNuevoPaciente)
 
-        
+
         botonAgregarPaciente.setOnClickListener {
             agregarNuevoPaciente.visibility = View.VISIBLE
             agregarNuevoPaciente.requestFocus()
@@ -80,7 +80,6 @@ class HomeFragment : Fragment() {
                         .show();
                 } else {
 
-                    //listapacientes.add(Pacientes(nombreIngresado))
                     val usuariosCollection = db.collection("Pacientes")
 
                     val nuevoUsuario = hashMapOf(
@@ -112,9 +111,6 @@ class HomeFragment : Fragment() {
                 Toast.makeText(getActivity(), "Complete el campo de texto", Toast.LENGTH_LONG).show();
             }
 
-            //Toast.makeText(getActivity(), "Agregue: $nombreIngresado", Toast.LENGTH_LONG).show();
-            //Toast.makeText(getActivity(), "LISTA: ${listapacientes.size}", Toast.LENGTH_LONG).show();
-
             agregarNuevoPaciente.text.clear()
 
         }
@@ -123,8 +119,6 @@ class HomeFragment : Fragment() {
         val docRef = db.collection("Pacientes")//.document("Paciente 1")
         docRef.get().addOnSuccessListener { documents -> //"Si todo esta bien"
             for (document in documents){ //"Si el documento existe"
-                //textoNombre.text = "Nombre: ${document.get("nombre") as String}" //MOSTRAR DATO PARTICULAR
-                //textoDatos.text = document.data.toString() MOSTRAR TODOS LOS DATOS
 
                 if (!flagX) {
                     val listaPacientesFiltrada = mutableListOf<String>()
@@ -133,7 +127,6 @@ class HomeFragment : Fragment() {
                     if (!listapacientes.contains(Pacientes(nombreUsuario))) {
                         listapacientes.add(Pacientes(nombreUsuario))
 
-                        //Toast.makeText(context, listapacientes.toString(), Toast.LENGTH_LONG).show();
                     }
 
                 }

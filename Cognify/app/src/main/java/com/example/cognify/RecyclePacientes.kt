@@ -64,28 +64,6 @@ class RecyclePacientes (var context:Context, var listaPacientes:MutableList<Paci
                     }
 
 
-
-
-
-
-                // Al tocar te manda a otra pantalla todo PF
-                /*
-                var position: Int = getAdapterPosition()
-                val context = itemView.context
-                val intent = Intent(context, datosPacienteActivity::class.java)
-
-                intent.putExtra("paqueteKeyPaciente", labelPacientes.text)
-                itemView.context.startActivity(intent)
-
-                */
-
-
-                //Para crear un snackbar:
-                //Toast.makeText(context, "ID: $idDelNuevoDocumento", Toast.LENGTH_LONG).show();
-
-
-
-
             }
         }
 

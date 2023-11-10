@@ -56,16 +56,12 @@ class datosPacienteActivity : AppCompatActivity() {
 
         botonBorrar = findViewById(R.id.botonBorrar)
 
-        //Toast.makeText(this, "Tocaste: $datoRecibido", Toast.LENGTH_LONG).show();
-
         textView33 = findViewById(R.id.textView3)
         textView33.text = "Ultimos resultados de: $keyPaciente"
 
         database = FirebaseDatabase.getInstance()
 
 
-
-         //todo Borrar un paciente DAP
         botonBorrar.setOnClickListener {
             if (!flagBotonBorrar) {
                 Toast.makeText(
