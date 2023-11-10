@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -29,18 +29,10 @@
         <action
             android:id="@+id/action_homeFragment_to_paciente1Fragment"
             app:destination="@id/paciente1Fragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_facuFragment"
-            app:destination="@id/facuFragment" />
     </fragment>
     <fragment
         android:id="@+id/paciente1Fragment"
         android:name="com.example.cognify.paciente1Fragment"
         android:label="fragment_paciente1"
         tools:layout="@layout/fragment_paciente1" />
-    <fragment
-        android:id="@+id/facuFragment"
-        android:name="com.example.cognify.facuFragment"
-        android:label="fragment_facu"
-        tools:layout="@layout/fragment_facu" />
 </navigation>

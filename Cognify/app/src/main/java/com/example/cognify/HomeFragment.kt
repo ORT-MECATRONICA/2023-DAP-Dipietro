@@ -19,8 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 
-// Por Bruno Dipietro 2023
-// Este fragment es para seleccionar un paciente
+// Este fragment es para seleccionar un paciente del recyclerView
 
 class HomeFragment : Fragment() {
 
@@ -33,8 +32,6 @@ class HomeFragment : Fragment() {
     private lateinit var botonAgregarPaciente: Button
 
     private lateinit var agregarNuevoPaciente:EditText
-
-    private lateinit var easterEgg1_Agradecimientos: Button
 
     private var flagX = false
 
@@ -63,112 +60,11 @@ class HomeFragment : Fragment() {
 
         //Asociamos variables
         botonAgregarPaciente = view.findViewById(R.id.botonAgregarPaciente)
-        easterEgg1_Agradecimientos = view.findViewById(R.id.easterEgg1_Agradecimientos)
         recycler = view.findViewById(R.id.listaRecycle)
 
         agregarNuevoPaciente = view.findViewById(R.id.agregarNuevoPaciente)
 
-
-        /* Forma IMPROVISADA CRUDA MAL MAL de añadir items al recycler. Cambiar por firebase
-           listapacientes.add(Pacientes("Carlos Mandú"))
-           listapacientes.add(Pacientes("PEPE Mandú"))
-
-           listapacientes.add(Pacientes("MATEO Mandú"))
-           listapacientes.add(Pacientes("Juan Mandú"))
-
-           listapacientes.add(Pacientes("BARBAS BARBAAAAS"))
-
-           HECHO :)) */
-
-
-        easterEgg1_Agradecimientos.setOnClickListener {
-            findNavController().navigate(R.id.facuFragment)
-        }
-
-
-        //RECYCLER CON REALTIME DATABASE (todo PF)
-        botonAgregarPaciente.setOnClickListener {
-            agregarNuevoPaciente.visibility = View.VISIBLE
-            agregarNuevoPaciente.requestFocus()
-
-            botonAgregarPaciente.text = "Confirmar"
-
-            if (agregarNuevoPaciente.text.isNotEmpty()) {
-
-                val nombreIngresado = agregarNuevoPaciente.text.toString()
-
-                if (listapacientes.contains(Pacientes(nombreIngresado))) {
-                    Toast.makeText(getActivity(), "Ya existe ese paciente", Toast.LENGTH_LONG)
-                        .show();
-                } else {
-
-                    //listapacientes.add(Pacientes(nombreIngresado))
-                    val nodoRefUsuarios =
-                        database.getReference("UsersData").child("yYNof0hM5jMPTdJOD7dyndwUepb2")
-                            .child("datos").child(nombreIngresado)
-
-                    val datoUsuario = mapOf("0" to "")
-
-                    // Subir los datos al nodo en la base de datos
-                    nodoRefUsuarios.setValue(datoUsuario)
-
-                    establecerAdapter()
-                    Toast.makeText(getActivity(), "Se agregó paciente", Toast.LENGTH_LONG).show();
-
-                    agregarNuevoPaciente.visibility = View.GONE
-                    botonAgregarPaciente.text = "Agregar paciente"
-
-                }
-            }
-            else {
-                Toast.makeText(getActivity(), "Complete el campo de texto", Toast.LENGTH_LONG).show();
-            }
-
-            //Toast.makeText(getActivity(), "Agregue: $nombreIngresado", Toast.LENGTH_LONG).show();
-            //Toast.makeText(getActivity(), "LISTA: ${listapacientes.size}", Toast.LENGTH_LONG).show();
-
-            agregarNuevoPaciente.text.clear()
-
-        }
-
-        usersReference = database.reference.child("UsersData")
-        val datosPersonalesReference = usersReference.child("yYNof0hM5jMPTdJOD7dyndwUepb2").child("datos")
-
-        datosPersonalesReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                for (userSnapshot in dataSnapshot.children) { //Mostrar los datos
-                    //Obtenemos los valores ENTRENAMIENTO
-                    //val datoTiempo = userSnapshot.child("tiempo").getValue(String::class.java)
-
-
-                    if (!flagX) {
-                        val listaPacientesFiltrada = mutableListOf<String>()
-                        val nombreUsuario = userSnapshot.key
-
-                        if (nombreUsuario != null) {
-                            if (!listapacientes.contains(Pacientes(nombreUsuario))) {
-                                listapacientes.add(Pacientes("$nombreUsuario"))
-
-                            }
-                        }
-
-                        //Toast.makeText(context, "$listaPacientes", Toast.LENGTH_LONG).show();
-
-                    }
-                }
-                establecerAdapter()
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Toast.makeText(context, "Error!", Toast.LENGTH_LONG).show();
-            }
-        })
-
-
-
-        //RECYCLER CON FIRESTORE (todo DAP)
-        /*
+        
         botonAgregarPaciente.setOnClickListener {
             agregarNuevoPaciente.visibility = View.VISIBLE
             agregarNuevoPaciente.requestFocus()
@@ -251,7 +147,7 @@ class HomeFragment : Fragment() {
 
         establecerAdapter()
 
-         */
+
 
 
 

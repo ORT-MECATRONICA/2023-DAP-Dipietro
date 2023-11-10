@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import clases.Pacientes
 import com.google.firebase.firestore.FirebaseFirestore
 
-//Por Bruno Dipietro 2023
 //Nuestro recycleView de pacientes
 
 //Creamos el Recycle
@@ -30,7 +29,7 @@ class RecyclePacientes (var context:Context, var listaPacientes:MutableList<Paci
 
                 //val nombreTocado = listaPacientes[position]
                 //cambio pantalla todo DAP
-                /*
+
                 val db = FirebaseFirestore.getInstance()
                 val usuariosCollection = db.collection("Pacientes")
 
@@ -64,19 +63,21 @@ class RecyclePacientes (var context:Context, var listaPacientes:MutableList<Paci
                         println("Error al consultar Firestore: $e")
                     }
 
-                 */
+
 
 
 
 
                 // Al tocar te manda a otra pantalla todo PF
-
+                /*
                 var position: Int = getAdapterPosition()
                 val context = itemView.context
                 val intent = Intent(context, datosPacienteActivity::class.java)
 
                 intent.putExtra("paqueteKeyPaciente", labelPacientes.text)
                 itemView.context.startActivity(intent)
+
+                */
 
 
                 //Para crear un snackbar:

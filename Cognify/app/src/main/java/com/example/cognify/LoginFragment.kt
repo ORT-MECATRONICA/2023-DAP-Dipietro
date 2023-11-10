@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 
-//Por Bruno Dipietro 2023
 //Intuitivamente, este es el fragement de login. Es la primer pantalla
 
 

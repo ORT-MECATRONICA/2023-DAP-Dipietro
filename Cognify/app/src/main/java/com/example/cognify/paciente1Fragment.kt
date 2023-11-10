@@ -64,28 +64,13 @@ class paciente1Fragment : Fragment() {
         textoApellido = view.findViewById(R.id.textViewShowLastName)
         textoEdad = view.findViewById(R.id.textViewShowAge)
 
-        //usersReference = database.reference.child("usuarios")
-
         leer()
-
-        //leerFirestore() //leemos los datos con una funcion
-
-
         return view //Retornamos el view antes mencionado
     }
 
 
 
     private fun leer() {
-
-        // Accedemos al nodo "usuarios"
-        /*
-        usersReference = database.reference.child("usuarios")
-        val datosPersonalesReference = usersReference.child("usuario2")
-         */
-
-
-
         usersReference = database.reference.child("UsersData")
         val datosPersonalesReference = usersReference.child("yYNof0hM5jMPTdJOD7dyndwUepb2").child("datos").child("zaky")
         val query = datosPersonalesReference.orderByKey().limitToLast(1)
@@ -93,16 +78,6 @@ class paciente1Fragment : Fragment() {
 
         query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                // Obtenemos los valores USUARIOS PRUBEA
-                /*
-                val nombreUsuario = dataSnapshot.child("numbre").getValue(String::class.java)
-                val apellidoUsuario = dataSnapshot.child("apellido").getValue(String::class.java)
-                val datoY = dataSnapshot.child("datoY").getValue(Int::class.java)
-
-                 */
-
-
                 for (userSnapshot in dataSnapshot.children) { //Mostrar los datos
                     //Obtenemos los valores ENTRENAMIENTO
                     val datoTiempo = userSnapshot.child("tiempo").getValue(String::class.java)
@@ -114,20 +89,6 @@ class paciente1Fragment : Fragment() {
                     textoEdad.text = "Correctas: $datoCorrectas"
                     textoDatos.text = ""
 
-
-                    /*
-                    //Forma de mostrarlos 1
-                    textoNombre.text = "Nombre1:  $nombreUsuario."
-                    textoApellido.text= "Apellido: $apellidoUsuario"
-                    textoEdad.text = "DatoY: ${datoY.toString()}"
-
-                    //Forma de mostrarlos 2
-                    Toast.makeText(getActivity(), "Nombre de usuario: $nombreUsuario", Toast.LENGTH_LONG).show();
-
-                     */
-
-
-
                 }
             }
 
@@ -137,39 +98,3 @@ class paciente1Fragment : Fragment() {
         })
     }
 }
-
-
-
-
-//TODO TE AMO BRUNO DEL PASADO POR NO BORRAR ESTO
-            /* FIRESTORE (BORRAR?)
-            private fun leerFirestore() {
-                //Accedemos al documento a leer
-                val docRef = db.collection("Pacientes").document("Paciente 1")
-                docRef.get().addOnSuccessListener { document -> //"Si todo esta bien"
-                    if (document != null){ //"Si el documento existe"
-                        textoNombre.text = "Nombre: ${document.get("nombre") as String}" //MOSTRAR DATO PARTICULAR
-                        textoApellido.text = "Apellido: ${document.get("apellido") as String}" //MOSTRAR DATO PARTICULAR
-                        textoEdad.text = "Edad: ${(document.get("Edad") as Number).toString()}"  //MOSTRAR DATO PARTICULAR
-                        textoDatos.text = ""
-
-                        //textoDatos.text = document.data.toString() MOSTRAR TODOS LOS DATOS
-
-
-                    }
-                    else{ //Si no hay documento
-                        Log.d("TAG", "No se encuentra el documento")
-                    }
-
-                }
-                    .addOnFailureListener() { exception ->
-                        Log.d("TAG", "Error al obtener $exception") //Otro error
-                    }
-
-
-            }
-           */
-
-
-
-
